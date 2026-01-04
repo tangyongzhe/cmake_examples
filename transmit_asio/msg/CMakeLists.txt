@@ -22,7 +22,7 @@ foreach(msg ${MSG_PROTOS})
                  "${PROJECT_BINARY_DIR}/message/${FIL_WE}.pb.h"
           COMMAND  ${PROTOBUF_PROTOC_EXECUTABLE}
           ARGS --cpp_out  ${PROTO_META_BASE_DIR}
-            -I ${CMAKE_SOURCE_DIR}/msg/message
+            -I ${CMAKE_SOURCE_DIR}/msg/message -I ${CMAKE_SOURCE_DIR}/msg/plugins -I ${Protobuf_ROOT}/src
             ${msg}
           DEPENDS ${msg}
           COMMENT "Running C++ protocol buffer compiler on ${msg}"

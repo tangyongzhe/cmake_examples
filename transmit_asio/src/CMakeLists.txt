@@ -1,11 +1,11 @@
 add_library(server SHARED "")
 add_library(client SHARED "")
 
-find_package(yaml-cpp REQUIRED)
-find_package(Protobuf 3 REQUIRED)
+#find_package(yaml-cpp REQUIRED)
+#find_package(Protobuf 3 REQUIRED)
 
-SET(MESSAGE_DIR ${CMAKE_BINARY_DIR}/message)
-if(EXISTS "${CMAKE_BINARY_DIR}/message" AND IS_DIRECTORY "${CMAKE_BINARY_DIR}/message")
+SET(MESSAGE_DIR ${CMAKE_HOME_DIRECTORY}/msg)
+if(EXISTS "${CMAKE_HOME_DIRECTORY}/msg" AND IS_DIRECTORY "${CMAKE_HOME_DIRECTORY}/msg")
         SET(PROTO_META_BASE_DIR ${MESSAGE_DIR})
 else()
         file(MAKE_DIRECTORY ${MESSAGE_DIR})
@@ -37,11 +37,11 @@ foreach(msg ${MSG_PROTOS})
 endforeach()
 set_source_files_properties(${MESSAGE_SRC} ${MESSAGE_HDRS} PROPERTIES GENERATED TRUE)
 
-add_custom_target(generate_message ALL
-                DEPENDS ${MESSAGE_SRC} ${MESSAGE_HDRS}
-                COMMENT "generate message target"
-                VERBATIM
-                )
+# add_custom_target(generate_message ALL
+#                 DEPENDS ${MESSAGE_SRC} ${MESSAGE_HDRS}
+#                 COMMENT "generate message target"
+#                 VERBATIM
+#                 )
 
 add_subdirectory(${CMAKE_SOURCE_DIR}/plugins ${CMAKE_BINARY_DIR}/plugins)
 

@@ -1,4 +1,7 @@
-find_package(OpenCV REQUIRED)
+#find_package(OpenCV REQUIRED)
+
+add_library(plugins SHARED ""
+            )
 
 set(PLUGIN_MESSAGE_DIR "")
 file(GLOB_RECURSE MSG_PROTOS ${CMAKE_SOURCE_DIR}/msg/plugins/*.proto)
@@ -9,9 +12,8 @@ foreach(file ${MSG_PROTOS})
 endforeach()
 
 set_source_files_properties(${MESSAGE_SRC} PROPERTIES GENERATED TRUE)
-add_library(plugins SHARED ""
-            )
 
+message(STATUS "MESSAGE_SRC:${MESSAGE_SRC}")
 add_dependencies(plugins generate_message)
 
 file(GLOB SRC_FILE ${CMAKE_CURRENT_LIST_DIR}/*.cpp)
@@ -39,6 +41,8 @@ target_include_directories(plugins
             $<INSTALL_INTERFACE:include/message/plugins>
             PRIVATE
             $<INSTALL_INTERFACE:3rd/spdlog/include>
+            ${PROJECT_BINARY_DIR}
+            ${PROJECT_BINARY_DIR}/message
             )
 target_link_libraries(plugins
         ${OpenCV_LIBRARIES}

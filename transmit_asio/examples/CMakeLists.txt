@@ -1,5 +1,5 @@
 
-find_package(OpenCV REQUIRED)
+#find_package(OpenCV REQUIRED)
 add_executable(test_server
         ${CMAKE_CURRENT_LIST_DIR}/test_server.cpp
         )
