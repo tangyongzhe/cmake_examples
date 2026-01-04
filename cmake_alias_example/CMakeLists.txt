@@ -116,7 +116,7 @@ include(${CMAKE_HOME_DIRECTORY}/../../cmake/ThirdPartyStaticManager.cmake)
 include(${CMAKE_HOME_DIRECTORY}/../../cmake/PathUtils.cmake)
 
 # 2. 设置第三方库搜索路径
-set(DEPEND_ROOT ${CMAKE_HOME_DIRECTORY}/../../../Dependencies CACHE PATH "Third-party libraries root directory")
+set(DEPEND_ROOT ${CMAKE_HOME_DIRECTORY}/../../Dependencies CACHE PATH "Third-party libraries root directory")
 
 # 3. 系统库别名设置
 message(STATUS "=== 设置系统库别名 ===")
@@ -151,8 +151,8 @@ import_static_library(${jsoncpp_lib_name}
 # 示例2: ZLIB压缩库
 import_static_library(${zlib_lib_name}
     ALIAS_NAME ZLib
-    LIBRARY_PATH "${DEPEND_ROOT}/zlib/v1.2.12/lib/${CURRENT_SYSTME_NAME}/${build_type}"
-    INCLUDE_PATH "${DEPEND_ROOT}/zlib/v1.2.12"
+    LIBRARY_PATH "${DEPEND_ROOT}/zlib/zlib-1.2.12/lib/${CURRENT_SYSTME_NAME}/${build_type}"
+    INCLUDE_PATH "${DEPEND_ROOT}/zlib/zlib-1.2.12"
     NAMESPACE MyProject_ThirdParty
     VERSION "1.2.12"
 )
